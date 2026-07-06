@@ -506,5 +506,37 @@
   }
 </script>
 
+  <script>
+document.addEventListener('mousemove', function(e) {
+    // Tạo một phần tử hạt lấp lánh
+    const sparkle = document.createElement('span');
+    sparkle.className = 'mouse-sparkle';
+    
+    // Gán ký tự lấp lánh (bạn có thể đổi thành các icon khác như ✨, 🌟, 🌸, 🤍)
+    const sparklesText = ['✨', '🌸', '•', '◦'];
+    sparkle.innerText = sparklesText[Math.floor(Math.random() * sparklesText.length)];
+    
+    // Định vị trí hạt ngay tại đầu con trỏ chuột
+    sparkle.style.left = e.pageX + 'px';
+    sparkle.style.top = e.pageY + 'px';
+    
+    // Tạo kích thước ngẫu nhiên cho hạt trông tự nhiên hơn
+    const size = Math.random() * 15 + 10; // Kích thước từ 10px đến 25px
+    sparkle.style.fontSize = size + 'px';
+    
+    // Tạo góc lệch ngẫu nhiên để hạt bay tản ra một chút
+    const destinationX = (Math.random() - 0.5) * 60;
+    const destinationY = (Math.random() - 0.5) * 60;
+    sparkle.style.setProperty('--x', destinationX + 'px');
+    sparkle.style.setProperty('--y', destinationY + 'px');
+    
+    document.body.appendChild(sparkle);
+    
+    // Tự động xóa hạt sau khi hiệu ứng hoạt họa kết thúc (0.8 giây)
+    setTimeout(() => {
+        sparkle.remove();
+    }, 800);
+});
+</script>
 </body>
 </html>
