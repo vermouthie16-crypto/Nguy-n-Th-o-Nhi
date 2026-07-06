@@ -506,36 +506,53 @@
   }
 </script>
 <script>
+// Tự động chèn CSS trực tiếp vào trang web bằng JavaScript để ép hoạt họa chạy
+const sparkleStyle = document.createElement('style');
+sparkleStyle.innerHTML = `
+    .super-sparkle {
+        position: fixed !important;
+        pointer-events: none !important;
+        transform: translate(-50%, -50%) !important;
+        color: #ffd700 !important;
+        text-shadow: 0 0 8px #ffd700, 0 0 15px #ff8c00 !important;
+        z-index: 999999 !important;
+        font-family: 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+        line-height: 1 !important;
+        animation: flyFade 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
+    }
+    @keyframes flyFade {
+        0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; }
+        100% { transform: translate(calc(-50% + var(--mx)), calc(-50% + var(--my))) scale(1.3) rotate(120deg); opacity: 0; }
+    }
+`;
+document.head.appendChild(sparkleStyle);
+
+// Lắng nghe sự kiện di chuyển chuột
 document.addEventListener('mousemove', function(e) {
-    // Tạo một phần tử hạt lấp lánh
-    const sparkle = document.createElement('span');
-    sparkle.className = 'mouse-sparkle';
+    // Tạo hạt lấp lánh
+    const p = document.createElement('div');
+    p.className = 'super-sparkle';
     
-    // Gán ký tự lấp lánh (bạn có thể đổi thành các icon khác như ✨, 🌟, 🌸, 🤍)
-    const sparklesText = ['✨', '🌸', '•', '◦'];
-    sparkle.innerText = sparklesText[Math.floor(Math.random() * sparklesText.length)];
+    // Chọn ngẫu nhiên biểu tượng lấp lánh
+    const icons = ['✨', '🌟', '⭐', '◦'];
+    p.innerText = icons[Math.floor(Math.random() * icons.length)];
     
-    // Định vị trí hạt ngay tại đầu con trỏ chuột
-    sparkle.style.left = e.pageX + 'px';
-    sparkle.style.top = e.pageY + 'px';
+    // Sử dụng clientX, clientY (Tọa độ cố định trên màn hình) thay vì pageX, pageY
+    p.style.left = e.clientX + 'px';
+    p.style.top = e.clientY + 'px';
     
-    // Tạo kích thước ngẫu nhiên cho hạt trông tự nhiên hơn
-    const size = Math.random() * 15 + 10; // Kích thước từ 10px đến 25px
-    sparkle.style.fontSize = size + 'px';
+    // Kích thước ngẫu nhiên
+    p.style.fontSize = (Math.random() * 12 + 12) + 'px';
     
-    // Tạo góc lệch ngẫu nhiên để hạt bay tản ra một chút
-    const destinationX = (Math.random() - 0.5) * 60;
-    const destinationY = (Math.random() - 0.5) * 60;
-    sparkle.style.setProperty('--x', destinationX + 'px');
-    sparkle.style.setProperty('--y', destinationY + 'px');
+    // Hướng bay ngẫu nhiên
+    p.style.setProperty('--mx', ((Math.random() - 0.5) * 50) + 'px');
+    p.style.setProperty('--my', ((Math.random() - 0.5) * 50) + 'px');
     
-    document.body.appendChild(sparkle);
+    document.body.appendChild(p);
     
-    // Tự động xóa hạt sau khi hiệu ứng hoạt họa kết thúc (0.8 giây)
-    setTimeout(() => {
-        sparkle.remove();
-    }, 800);
+    // Xóa hạt sau 0.7 giây
+    setTimeout(() => p.remove(), 700);
 });
- </script>
+</script>
 </body>
 </html>
