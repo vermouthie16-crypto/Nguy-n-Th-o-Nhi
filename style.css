@@ -441,13 +441,14 @@ footer {
 }
 /* HIỆU ỨNG LẤP LÁNH CHUỘT */
 .mouse-sparkle {
-    position: absolute;
-    pointer-events: none; /* Tránh làm cản trở việc click chuột vào các nút khác trên web */
-    transform: translate(-50%, -50%);
-    color: #ffd700; /* Màu vàng kim (bạn có thể đổi sang #4f46e5 nếu thích màu tím đồng bộ web) */
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
-    animation: sparkle-fly-fade 0.8s linear forwards;
-    z-index: 9999; /* Đảm bảo hiệu ứng luôn nổi lên trên cùng website */
+    position: absolute !important;
+    pointer-events: none !important;
+    transform: translate(-50%, -50%) !important;
+    color: #ffd700 !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4) !important;
+    animation: sparkle-fly-fade 0.8s linear forwards !important;
+    z-index: 99999 !important; /* Tăng tối đa để chắc chắn không bị các phần tử khác đè lên */
+    display: inline-block !important;
 }
 
 @keyframes sparkle-fly-fade {
@@ -459,7 +460,6 @@ footer {
         opacity: 1;
     }
     100% {
-        /* Hạt sẽ bay lệch đi một khoảng ngẫu nhiên nhờ biến --x, --y từ JS và thu nhỏ, biến mất */
         transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.2) rotate(180deg);
         opacity: 0;
     }
