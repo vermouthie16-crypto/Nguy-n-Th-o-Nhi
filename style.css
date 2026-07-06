@@ -435,3 +435,7 @@ footer {
     .summary-wrapper { padding: 30px 20px; }
     .hero-content h1 { font-size: 38px; }
 }
+.logo {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 26px;
+}
