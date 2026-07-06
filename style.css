@@ -439,3 +439,28 @@ footer {
     font-family: 'Dancing Script', cursive !important;
     font-size: 26px;
 }
+/* HIỆU ỨNG LẤP LÁNH CHUỘT */
+.mouse-sparkle {
+    position: absolute;
+    pointer-events: none; /* Tránh làm cản trở việc click chuột vào các nút khác trên web */
+    transform: translate(-50%, -50%);
+    color: #ffd700; /* Màu vàng kim (bạn có thể đổi sang #4f46e5 nếu thích màu tím đồng bộ web) */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.4);
+    animation: sparkle-fly-fade 0.8s linear forwards;
+    z-index: 9999; /* Đảm bảo hiệu ứng luôn nổi lên trên cùng website */
+}
+
+@keyframes sparkle-fly-fade {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        /* Hạt sẽ bay lệch đi một khoảng ngẫu nhiên nhờ biến --x, --y từ JS và thu nhỏ, biến mất */
+        transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.2) rotate(180deg);
+        opacity: 0;
+    }
+}
