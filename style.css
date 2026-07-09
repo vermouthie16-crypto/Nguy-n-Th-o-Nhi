@@ -439,3 +439,40 @@ footer {
     font-family: 'Dancing Script', cursive !important;
     font-size: 26px;
 }
+/* Kích hoạt Flexbox dàn ngang cho khối reflect-cols */
+.reflect-cols {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;            /* Khoảng cách giữa cột trái và cột phải */
+    align-items: flex-start; /* Căn cho hai cột bằng đầu nhau ở phía trên */
+    margin-bottom: 40px;  /* Khoảng cách đến khối stats-row phía dưới */
+}
+
+/* Chia đều không gian: Mỗi bên chiếm gần 50% độ rộng */
+.reflect-left, .reflect-right {
+    flex: 1;
+    min-width: 0;        /* Chống lỗi tràn chữ (overflow) trong flexbox */
+}
+
+/* Định dạng một chút cho thẻ chữ p bên trong cột cho dễ đọc */
+.reflect-cols p {
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85); /* Màu chữ sáng dịu */
+    font-size: 15px;
+    text-align: justify;  /* Căn đều hai bên cho giống trang báo/tạp chí chuyên nghiệp */
+}
+
+.reflect-cols h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+/* Tự động chuyển về hàng dọc nếu xem trên điện thoại (Màn hình nhỏ dưới 768px) */
+@media (max-width: 768px) {
+    .reflect-cols {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
