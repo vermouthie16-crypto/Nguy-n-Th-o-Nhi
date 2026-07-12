@@ -16,6 +16,7 @@
     --purple:#baaaea;
     --purple-deep:#a884ca;
     --pink:#fbb0cf;
+    --pink-deep:#d9578e;
     --line:rgba(92,70,163,0.14);
     --shadow: 0 14px 34px rgba(92,70,163,0.10);
   }
@@ -66,7 +67,7 @@
   h1,h2,h3{font-family:'Baloo 2', sans-serif; font-weight:700;}
   .script{
     font-family:'Baloo 2', sans-serif; font-weight:800;
-    background:linear-gradient(90deg, #C9AEFF, var(--pink), #E7B8E0, #C9AEFF);
+    background:linear-gradient(90deg, var(--purple-deep), var(--pink-deep), #b23d78, var(--purple-deep));
     background-size:300% auto;
     -webkit-background-clip:text; background-clip:text; color:transparent;
     animation:shimmerText 6s linear infinite;
@@ -144,7 +145,7 @@
   .hero h1 .script{font-size:clamp(2.3rem, 5.4vw, 3.6rem); display:block; margin-top:2px;}
   .hero p.lead{margin:22px 0 0; font-size:1.04rem; color:var(--ink-soft); max-width:520px; font-weight:500;}
   @media (max-width:860px){.hero p.lead{margin-left:auto; margin-right:auto;}}
-  .hero p.lead b{color:var(--pink); font-weight:800;}
+  .hero p.lead b{color:var(--pink-deep); font-weight:800;}
 
   .hero-photo-wrap{width:100%; max-width:320px; margin:0 auto; will-change:transform;}
   .hero-photo{
@@ -224,6 +225,25 @@
   @media (max-width:760px){.reflect-cols{grid-template-columns:1fr;}}
   .reflect-cols h4{font-size:0.98rem; margin-bottom:8px; display:flex; gap:8px; align-items:center;}
   .reflect-cols p{font-size:0.9rem; color:var(--ink-soft); font-weight:500;}
+
+  .skills-card{
+    background:linear-gradient(135deg, rgba(186,170,234,0.14), rgba(251,176,207,0.1));
+    border:1px solid var(--line); border-radius:22px; padding:32px 34px; margin-bottom:38px;
+  }
+  .skills-card h4{font-size:0.98rem; margin-bottom:22px; display:flex; gap:8px; align-items:center;}
+  .skill-row{margin-bottom:18px;}
+  .skill-row:last-child{margin-bottom:0;}
+  .skill-row .skill-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px;}
+  .skill-row .skill-name{font-size:0.86rem; font-weight:700; color:var(--ink);}
+  .skill-row .skill-pct{font-size:0.78rem; font-weight:700; color:var(--purple-deep);}
+  .skill-track{width:100%; height:9px; border-radius:999px; background:rgba(92,70,163,0.12); overflow:hidden;}
+  .skill-fill{
+    height:100%; width:0; border-radius:999px;
+    background:linear-gradient(90deg, var(--purple-deep), var(--pink));
+    transition:width 1.3s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal.in .skill-fill{ width:var(--pct); }
+
   .stats-row{
     display:flex; justify-content:space-around; flex-wrap:wrap; gap:24px;
     border-top:1px dashed var(--line); padding-top:32px;
@@ -410,6 +430,35 @@
         <p>Chính trong quá trình rèn luyện đó, mình thấu suốt được bài học cốt lõi: Kỹ năng điều phối câu lệnh (Prompt Engineering) và lăng kính phản biện sắc bén chính là bộ đôi quyết định chất lượng của mọi giải pháp đầu ra. AI có thể là đòn bẩy khuếch đại năng suất mạnh mẽ, giúp mình tối ưu hóa quy trình phối hợp nhóm hay tự tay thiết kế và chuẩn hóa hệ thống tài liệu học tập; nhưng sự độc bản, chiều sâu cảm xúc và năng lực kiểm chứng thông tin nghiêm ngặt của con người mới là thứ giữ cho chúng ta luôn ở vị thế làm chủ công nghệ.</p>
       </div>
     </div>
+
+    <div class="skills-card reveal">
+      <h4>💪 Kỹ năng phát triển</h4>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">Tư duy phản biện</span><span class="skill-pct">85%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:85%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">Kỹ năng số</span><span class="skill-pct">80%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:80%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">Prompt Engineering</span><span class="skill-pct">78%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:78%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">Làm việc nhóm</span><span class="skill-pct">90%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:90%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">AI có trách nhiệm</span><span class="skill-pct">75%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:75%"></div></div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-top"><span class="skill-name">Sáng tạo nội dung</span><span class="skill-pct">72%</span></div>
+        <div class="skill-track"><div class="skill-fill" style="--pct:72%"></div></div>
+      </div>
+    </div>
+
     <div class="stats-row">
       <div class="stat">
         <div class="num">06/06</div>
